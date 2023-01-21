@@ -1,5 +1,5 @@
 {
-    "name": "fugazi-code/filter",
+    "name": "fugazi-code/laravel-eloquent-filter",
     "description": "A custom filter for your Eloquent Builder",
     "license": "MIT",
     "authors": [
