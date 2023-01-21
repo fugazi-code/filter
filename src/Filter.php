@@ -39,9 +39,4 @@ abstract class Filter
 
         return $this->query;
     }
-
-    public function setFilter($filter)
-    {
-        return $this;
-    }
 }

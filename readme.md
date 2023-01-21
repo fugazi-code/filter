@@ -2,8 +2,6 @@
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Total Downloads][ico-downloads]][link-downloads]
-[![Build Status][ico-travis]][link-travis]
-[![StyleCI][ico-styleci]][link-styleci]
 
 This is where your description should go. Take a look at [contributing.md](contributing.md) to see a to do list.
 
@@ -12,7 +10,7 @@ This is where your description should go. Take a look at [contributing.md](contr
 Via Composer
 
 ``` bash
-$ composer require fugazi-code/filter
+$ composer require fugazi-code/laravel-eloquent-filter
 ```
 
 ## Usage
@@ -21,12 +19,41 @@ $ composer require fugazi-code/filter
 
 Please see the [changelog](changelog.md) for more information on what has changed recently.
 
-## Testing
+## Install
 
 ``` bash
-$ composer test
+$ php artisan make:filter UserFilter
 ```
 
+## Filter Class
+``` php
+<?php
+
+namespace App\Http\Controllers\Filters;
+
+use FugaziCode\Filter\Filter;
+
+class UserFilter extends Filter
+{
+    public function email($value)
+    {
+        $this->query->where('email', 'like', "%$value%");
+    }
+
+    public function permanent($value)
+    {
+        $this->query->whereHas('address', function($query) use ($value) {
+            $query->where('permanent', 'like', "%$value%");
+        });
+    }
+}
+```
+## Eloquent Implementation
+``` php
+Route::get('/', function () {
+    return User::query()->with(['address'])->filter(new UserFilter)->get();
+});
+```
 ## Contributing
 
 Please see [contributing.md](contributing.md) for details and a todolist.
@@ -37,7 +64,7 @@ If you discover any security related issues, please email author@email.com inste
 
 ## Credits
 
-- [Author Name][link-author]
+- [Renier Trenuela II][link-author]
 - [All Contributors][link-contributors]
 
 ## License
