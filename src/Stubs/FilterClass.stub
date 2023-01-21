@@ -1,0 +1,10 @@
+<?php
+
+namespace $NAMESPACE$;
+
+use $FILTER_PROVIDER_NAMESPACE$;
+
+class $CLASS_NAME$ extends $FILTER_PROVIDER$
+{
+
+}

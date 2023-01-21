@@ -1,0 +1,40 @@
+{
+    "name": "fugazi-code/filter",
+    "description": "A custom filter for your Eloquent Builder",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Renier Trenuela",
+            "email": "renier.trenuela@gmail.com"
+        }
+    ],
+    "homepage": "https://github.com/fugazi-code/filter",
+    "keywords": ["Laravel", "Filter"],
+    "require": {
+        "illuminate/support": "~9"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~9.0",
+        "orchestra/testbench": "~7"
+    },
+    "autoload": {
+        "psr-4": {
+            "FugaziCode\\Filter\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "FugaziCode\\Filter\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "FugaziCode\\Filter\\FilterServiceProvider"
+            ],
+            "aliases": {
+                "Filter": "FugaziCode\\Filter\\Facades\\Filter"
+            }
+        }
+    }
+}
